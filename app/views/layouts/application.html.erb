@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>GroupTable</title>
+    <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
+    <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
+    <%= csrf_meta_tags %>
+  </head>
+  <body>
+    <div class="navbar">
+      <div class="container">
+        <div class="row">
+          <div class="col-md-10 col-md-offset-5">
+            <h1>
+              GroupTable
+            </h1>
+          </div>
+        </div>
+        <% if current_user %>
+          <%= link_to 'Logout',destroy_user_session_path,:method=>:delete %>
+        <% end %>
+      </div>
+    </div>
+    <div class="container">
+      <%= content_tag(:div, flash[:notice], :class => ["alert", "alert-danger"], :id => "flash_error") if flash[:notice] %>
+      <%= yield %>
+    </div>
+  </body>
+</html>

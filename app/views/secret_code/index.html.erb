@@ -1,0 +1,23 @@
+<h1>SecretCodes</h1>
+
+<%= form_tag('/secret_code') do -%>
+  <div>
+    <%= select "code", "limit", [1, 10, 20, 50, 100],:selected=>10%>
+  </div>
+  <br/>
+<div><%= submit_tag 'Create', class: "btn btn-success" %></div>
+<% end -%>
+<br/>
+<table class="table">
+  <tr>
+  <th>Code</th>
+  <th>Email</th>
+  </tr>
+   <%@codes.each do |code|%>
+  <tr>
+    <td><%=code.code%></td>
+    <td><%=code.user_email%></td>
+  </tr>
+    <%end%>
+</table>
+
